@@ -1,0 +1,29 @@
+图书推荐系统运行结果
+
+一、数据清洗后规模
+用户数: 6358
+图书数: 2178
+评分数: 60133
+
+二、默认演示用户: 11676
+
+三、个性化推荐结果
+1. Fahrenheit 451 | 作者: RAY BRADBURY | 分数: 9.33 | 评分人数: 101
+2. Divine Secrets of the Ya-Ya Sisterhood: A Novel | 作者: Rebecca Wells | 分数: 8.37 | 评分人数: 167
+3. Harry Potter and the Order of the Phoenix (Book 5) | 作者: J. K. Rowling | 分数: 8.01 | 评分人数: 158
+4. She's Come Undone (Oprah's Book Club) | 作者: Wally Lamb | 分数: 7.98 | 评分人数: 115
+5. The Bean Trees | 作者: Barbara Kingsolver | 分数: 7.75 | 评分人数: 70
+6. Private Eyes (Alex Delaware Novels (Paperback)) | 作者: Jonathan Kellerman | 分数: 7.41 | 评分人数: 16
+7. The Bonfire of the Vanities | 作者: Tom Wolfe | 分数: 5.77 | 评分人数: 36
+
+四、热门图书推荐
+1. The Return of the King (The Lord of the Rings, Part 3) | 作者: J.R.R. TOLKIEN | 分数: 9.46 | 评分人数: 54
+2. The Two Towers (The Lord of the Rings, Part 2) | 作者: J.R.R. TOLKIEN | 分数: 9.31 | 评分人数: 58
+3. Harry Potter and the Goblet of Fire (Book 4) | 作者: J. K. Rowling | 分数: 9.30 | 评分人数: 105
+4. Harry Potter and the Prisoner of Azkaban (Book 3) | 作者: J. K. Rowling | 分数: 9.20 | 评分人数: 110
+5. Griffin & Sabine: An Extraordinary Correspondence | 作者: Nick Bantock | 分数: 9.10 | 评分人数: 41
+6. Charlotte's Web (Trophy Newbery) | 作者: E. B. White | 分数: 9.07 | 评分人数: 44
+7. Harry Potter and the Order of the Phoenix (Book 5) | 作者: J. K. Rowling | 分数: 9.06 | 评分人数: 158
+8. To Kill a Mockingbird | 作者: Harper Lee | 分数: 9.05 | 评分人数: 136
+9. The Fellowship of the Ring (The Lord of the Rings, Part 1) | 作者: J.R.R. TOLKIEN | 分数: 9.04 | 评分人数: 72
+10. The Hobbit: or There and Back Again | 作者: J.R.R. Tolkien | 分数: 9.03 | 评分人数: 32
