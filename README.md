@@ -2,6 +2,17 @@
 
 这是一个基于 `Book-Crossing` 数据集完成的图书推荐小项目，适合作为推荐系统课程实验提交。
 
+## 新增：奥运奖牌可视化实验
+
+本仓库另补充了一个独立的数据可视化实验目录：
+
+- `olympic_medal_story/`：东京奥运会奖牌数据可视化实验
+- 生成内容包含 Top10 柱状图、项目金牌饼图、获奖时间折线图、子项目热力图、金牌时间轴和桑基图
+- 运行入口：`.venv/bin/python olympic_medal_story/olympic_medal_story.py`
+- 汇总图表：`olympic_medal_story/output/charts/东京奥运会奖牌数据可视化总览.html`
+
+下面是原图书推荐系统实验说明。
+
 项目尽量保持简单，主要做了两件事：
 
 1. 热门图书推荐
