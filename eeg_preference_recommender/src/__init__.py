@@ -1,0 +1,2 @@
+"""EEG preference recommender package."""
+
