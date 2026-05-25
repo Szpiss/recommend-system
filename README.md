@@ -11,6 +11,15 @@
 - 运行入口：`.venv/bin/python olympic_medal_story/olympic_medal_story.py`
 - 汇总图表：`olympic_medal_story/output/charts/东京奥运会奖牌数据可视化总览.html`
 
+## 新增：EEG 脑信号偏好推荐实验
+
+本仓库另补充了一个独立的深度学习推荐实验目录：
+
+- `eeg_preference_recommender/`：基于脑信号推断用户偏好的推荐系统实验
+- 支持模拟 EEG 数据、频段特征提取、PyTorch CNN 训练、分类评估、Top-N 推荐和报告生成
+- 一键运行入口：`cd eeg_preference_recommender && python main.py`
+- 实验报告：`eeg_preference_recommender/report/experiment_report.md`
+
 下面是原图书推荐系统实验说明。
 
 项目尽量保持简单，主要做了两件事：
