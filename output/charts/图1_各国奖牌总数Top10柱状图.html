@@ -8,12 +8,11 @@
     
 </head>
 <body >
-    <div id="393793c256e2492399f0aa7180b05e98" class="chart-container" style="width:1000px; height:600px; "></div>
+    <div id="ea121bd90905468686911d0e8a51d021" class="chart-container" style="width:900px; height:500px; "></div>
     <script>
-        var chart_393793c256e2492399f0aa7180b05e98 = echarts.init(
-            document.getElementById('393793c256e2492399f0aa7180b05e98'), 'light', {renderer: 'canvas', locale: 'ZH'});
-        var option_393793c256e2492399f0aa7180b05e98 = {
-    "backgroundColor": "#FFFFFF",
+        var chart_ea121bd90905468686911d0e8a51d021 = echarts.init(
+            document.getElementById('ea121bd90905468686911d0e8a51d021'), 'white', {renderer: 'canvas', locale: 'ZH'});
+        var option_ea121bd90905468686911d0e8a51d021 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -59,16 +58,9 @@
             "z": 2,
             "label": {
                 "show": true,
-                "position": "right",
                 "margin": 8,
                 "richInheritPlainLabel": true,
                 "valueAnimation": false
-            },
-            "rippleEffect": {
-                "show": true,
-                "brushType": "stroke",
-                "scale": 2.5,
-                "period": 4
             }
         },
         {
@@ -104,16 +96,9 @@
             "z": 2,
             "label": {
                 "show": true,
-                "position": "right",
                 "margin": 8,
                 "richInheritPlainLabel": true,
                 "valueAnimation": false
-            },
-            "rippleEffect": {
-                "show": true,
-                "brushType": "stroke",
-                "scale": 2.5,
-                "period": 4
             }
         },
         {
@@ -149,16 +134,9 @@
             "z": 2,
             "label": {
                 "show": true,
-                "position": "right",
                 "margin": 8,
                 "richInheritPlainLabel": true,
                 "valueAnimation": false
-            },
-            "rippleEffect": {
-                "show": true,
-                "brushType": "stroke",
-                "scale": 2.5,
-                "period": 4
             }
         }
     ],
@@ -169,37 +147,15 @@
                 "\u94f6\u724c",
                 "\u94dc\u724c"
             ],
-            "selected": {},
-            "show": true,
-            "left": "center",
-            "top": "8%",
-            "padding": 5,
-            "itemGap": 10,
-            "itemWidth": 25,
-            "itemHeight": 14,
-            "backgroundColor": "transparent",
-            "borderColor": "#ccc",
-            "borderRadius": 0,
-            "pageButtonItemGap": 5,
-            "pageButtonPosition": "end",
-            "pageFormatter": "{current}/{total}",
-            "pageIconColor": "#2f4554",
-            "pageIconInactiveColor": "#aaa",
-            "pageIconSize": 15,
-            "animationDurationUpdate": 800,
-            "selector": false,
-            "selectorPosition": "auto",
-            "selectorItemGap": 7,
-            "selectorButtonGap": 10,
-            "triggerEvent": false
+            "selected": {}
         }
     ],
     "tooltip": {
         "show": true,
-        "trigger": "axis",
+        "trigger": "item",
         "triggerOn": "mousemove|click",
         "axisPointer": {
-            "type": "shadow"
+            "type": "line"
         },
         "showContent": true,
         "alwaysShowContent": false,
@@ -220,7 +176,6 @@
     },
     "xAxis": [
         {
-            "name": "\u5956\u724c\u6570\u91cf",
             "show": true,
             "scale": false,
             "nameLocation": "end",
@@ -251,7 +206,6 @@
     ],
     "yAxis": [
         {
-            "name": "\u56fd\u5bb6",
             "show": true,
             "scale": false,
             "nameLocation": "end",
@@ -291,27 +245,9 @@
                 "\u7f8e\u56fd"
             ]
         }
-    ],
-    "color": [
-        "#D9A441",
-        "#A7B0BA",
-        "#B87333"
-    ],
-    "title": [
-        {
-            "show": true,
-            "text": "\u4e1c\u4eac\u5965\u8fd0\u4f1a\u5956\u724c\u699c Top 10",
-            "target": "blank",
-            "subtarget": "blank",
-            "padding": 5,
-            "itemGap": 10,
-            "textAlign": "auto",
-            "textVerticalAlign": "auto",
-            "triggerEvent": false
-        }
     ]
 };
-        chart_393793c256e2492399f0aa7180b05e98.setOption(option_393793c256e2492399f0aa7180b05e98);
+        chart_ea121bd90905468686911d0e8a51d021.setOption(option_ea121bd90905468686911d0e8a51d021);
     </script>
 </body>
 </html>

@@ -6,12 +6,9 @@ from pyecharts.charts import Bar, HeatMap, Line, Page, Pie, Sankey, Timeline
 from pyecharts.globals import ThemeType
 
 
-try:
-    BASE_DIR = Path(__file__).resolve().parent
-except NameError:
-    BASE_DIR = Path.cwd()
+BASE_DIR = Path.cwd()
 
-if not (BASE_DIR / "data").exists() and (BASE_DIR / "olympic_medal_story" / "data").exists():
+if (BASE_DIR / "olympic_medal_story" / "data").exists():
     BASE_DIR = BASE_DIR / "olympic_medal_story"
 DATA_DIR = BASE_DIR / "data"
 OUTPUT_DIR = BASE_DIR / "output"

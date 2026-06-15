@@ -8,12 +8,11 @@
     
 </head>
 <body >
-    <div id="0bde0e7c9aa64e3c8b38b26175333f9f" class="chart-container" style="width:1000px; height:600px; "></div>
+    <div id="37916bf51fd541c0b4dc3cd380c378ed" class="chart-container" style="width:900px; height:500px; "></div>
     <script>
-        var chart_0bde0e7c9aa64e3c8b38b26175333f9f = echarts.init(
-            document.getElementById('0bde0e7c9aa64e3c8b38b26175333f9f'), 'light', {renderer: 'canvas', locale: 'ZH'});
-        var option_0bde0e7c9aa64e3c8b38b26175333f9f = {
-    "backgroundColor": "#FFFFFF",
+        var chart_37916bf51fd541c0b4dc3cd380c378ed = echarts.init(
+            document.getElementById('37916bf51fd541c0b4dc3cd380c378ed'), 'white', {renderer: 'canvas', locale: 'ZH'});
+        var option_37916bf51fd541c0b4dc3cd380c378ed = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -27,105 +26,101 @@
     },
     "series": [
         {
-            "type": "line",
-            "name": "\u6bcf\u65e5\u5956\u724c\u4ea7\u51fa\u603b\u6570",
-            "connectNulls": false,
-            "xAxisIndex": 0,
-            "symbolSize": 8,
-            "showSymbol": true,
-            "smooth": true,
-            "clip": true,
-            "step": false,
-            "stackStrategy": "samesign",
+            "type": "heatmap",
+            "name": "\u83b7\u5956\u6b21\u6570",
+            "coordinateSystem": "cartesian2d",
             "data": [
                 [
-                    "2021-07-24",
-                    35
+                    0,
+                    0,
+                    13
                 ],
                 [
-                    "2021-07-25",
-                    58
+                    0,
+                    1,
+                    13
                 ],
                 [
-                    "2021-07-26",
-                    68
+                    0,
+                    2,
+                    13
                 ],
                 [
-                    "2021-07-27",
-                    71
+                    1,
+                    0,
+                    12
                 ],
                 [
-                    "2021-07-28",
-                    71
+                    1,
+                    1,
+                    12
                 ],
                 [
-                    "2021-07-29",
-                    53
+                    1,
+                    2,
+                    12
                 ],
                 [
-                    "2021-07-30",
-                    65
+                    2,
+                    0,
+                    3
                 ],
                 [
-                    "2021-07-31",
-                    70
+                    2,
+                    1,
+                    3
                 ],
                 [
-                    "2021-08-01",
-                    76
+                    2,
+                    2,
+                    3
                 ],
                 [
-                    "2021-08-02",
-                    64
+                    3,
+                    0,
+                    3
                 ],
                 [
-                    "2021-08-03",
-                    81
+                    3,
+                    1,
+                    3
                 ],
                 [
-                    "2021-08-04",
-                    59
+                    3,
+                    2,
+                    3
                 ],
                 [
-                    "2021-08-05",
-                    95
+                    4,
+                    0,
+                    3
                 ],
                 [
-                    "2021-08-06",
-                    80
+                    4,
+                    1,
+                    3
                 ],
                 [
-                    "2021-08-07",
-                    103
-                ],
-                [
-                    "2021-08-08",
-                    34
+                    4,
+                    2,
+                    3
                 ]
             ],
-            "hoverAnimation": true,
             "label": {
-                "show": false,
+                "show": true,
                 "margin": 8,
                 "richInheritPlainLabel": true,
                 "valueAnimation": false
             },
-            "logBase": 10,
-            "seriesLayoutBy": "column",
-            "lineStyle": {
-                "show": false
-            },
-            "areaStyle": {
-                "opacity": 0.18
-            },
+            "selectedMode": false,
             "zlevel": 0,
-            "z": 0
+            "z": 2
         }
     ],
     "legend": [
         {
             "data": [
-                "\u6bcf\u65e5\u5956\u724c\u4ea7\u51fa\u603b\u6570"
+                "\u83b7\u5956\u6b21\u6570"
             ],
             "selected": {},
             "show": true,
@@ -152,7 +147,7 @@
     ],
     "tooltip": {
         "show": true,
-        "trigger": "axis",
+        "trigger": "item",
         "triggerOn": "mousemove|click",
         "axisPointer": {
             "type": "line"
@@ -176,20 +171,12 @@
     },
     "xAxis": [
         {
-            "name": "\u65e5\u671f",
             "show": true,
             "scale": false,
             "nameLocation": "end",
             "nameGap": 15,
             "nameTruncate": {},
             "nameMoveOverlap": true,
-            "axisLabel": {
-                "show": true,
-                "rotate": 35,
-                "margin": 8,
-                "richInheritPlainLabel": true,
-                "valueAnimation": false
-            },
             "inverse": false,
             "offset": 0,
             "splitNumber": 5,
@@ -211,28 +198,16 @@
             "animationEasingUpdate": "cubicOut",
             "animationDelayUpdate": 0,
             "data": [
-                "2021-07-24",
-                "2021-07-25",
-                "2021-07-26",
-                "2021-07-27",
-                "2021-07-28",
-                "2021-07-29",
-                "2021-07-30",
-                "2021-07-31",
-                "2021-08-01",
-                "2021-08-02",
-                "2021-08-03",
-                "2021-08-04",
-                "2021-08-05",
-                "2021-08-06",
-                "2021-08-07",
-                "2021-08-08"
+                "\u5973\u5b50\u7ec4",
+                "\u7537\u5b50\u7ec4",
+                "\u5973\u5b50\u56e2\u4f53",
+                "\u7537\u5b50\u56e2\u4f53",
+                "\u5973\u5b50\u5355\u6253"
             ]
         }
     ],
     "yAxis": [
         {
-            "name": "\u5956\u724c\u6570\u91cf",
             "show": true,
             "scale": false,
             "nameLocation": "end",
@@ -258,13 +233,17 @@
             "animationDelay": 0,
             "animationDurationUpdate": 300,
             "animationEasingUpdate": "cubicOut",
-            "animationDelayUpdate": 0
+            "animationDelayUpdate": 0,
+            "data": [
+                "\u91d1\u724c",
+                "\u94f6\u724c",
+                "\u94dc\u724c"
+            ]
         }
     ],
     "title": [
         {
             "show": true,
-            "text": "\u83b7\u5956\u65f6\u95f4\u4e0e\u5956\u724c\u6570\u91cf\u5173\u7cfb\u6298\u7ebf\u56fe",
             "target": "blank",
             "subtarget": "blank",
             "padding": 5,
@@ -274,22 +253,31 @@
             "triggerEvent": false
         }
     ],
-    "dataZoom": [
-        {
-            "show": true,
-            "type": "slider",
-            "showDetail": true,
-            "showDataShadow": true,
-            "realtime": true,
-            "start": 0,
-            "end": 100,
-            "orient": "horizontal",
-            "zoomLock": false,
-            "filterMode": "filter"
-        }
-    ]
+    "visualMap": {
+        "show": true,
+        "type": "continuous",
+        "min": 0,
+        "max": 100,
+        "inRange": {
+            "color": [
+                "#50a3ba",
+                "#eac763",
+                "#d94e5d"
+            ]
+        },
+        "calculable": true,
+        "inverse": false,
+        "splitNumber": 5,
+        "hoverLink": true,
+        "orient": "horizontal",
+        "padding": 5,
+        "showLabel": true,
+        "itemWidth": 20,
+        "itemHeight": 140,
+        "borderWidth": 0
+    }
 };
-        chart_0bde0e7c9aa64e3c8b38b26175333f9f.setOption(option_0bde0e7c9aa64e3c8b38b26175333f9f);
+        chart_37916bf51fd541c0b4dc3cd380c378ed.setOption(option_37916bf51fd541c0b4dc3cd380c378ed);
     </script>
 </body>
 </html>

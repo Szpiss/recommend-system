@@ -8,12 +8,11 @@
     
 </head>
 <body >
-    <div id="9d1d6298c9674ca1af1bb59d0e9c787f" class="chart-container" style="width:1000px; height:600px; "></div>
+    <div id="53d2e86480ce441c982543dc298b986e" class="chart-container" style="width:900px; height:500px; "></div>
     <script>
-        var chart_9d1d6298c9674ca1af1bb59d0e9c787f = echarts.init(
-            document.getElementById('9d1d6298c9674ca1af1bb59d0e9c787f'), 'light', {renderer: 'canvas', locale: 'ZH'});
-        var option_9d1d6298c9674ca1af1bb59d0e9c787f = {
-    "backgroundColor": "#FFFFFF",
+        var chart_53d2e86480ce441c982543dc298b986e = echarts.init(
+            document.getElementById('53d2e86480ce441c982543dc298b986e'), 'white', {renderer: 'canvas', locale: 'ZH'});
+        var option_53d2e86480ce441c982543dc298b986e = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -28,6 +27,7 @@
     "series": [
         {
             "type": "pie",
+            "name": "\u91d1\u724c\u6570\u91cf",
             "colorBy": "data",
             "legendHoverLink": true,
             "selectedMode": false,
@@ -106,18 +106,16 @@
                 }
             ],
             "radius": [
-                "32%",
-                "68%"
+                "0%",
+                "75%"
             ],
             "center": [
-                "45%",
-                "55%"
+                "50%",
+                "50%"
             ],
-            "roseType": "radius",
             "label": {
                 "show": true,
                 "margin": 8,
-                "formatter": "{b}: {d}%",
                 "richInheritPlainLabel": true,
                 "valueAnimation": false
             },
@@ -129,12 +127,6 @@
                 "smooth": false,
                 "minTurnAngle": 90,
                 "maxSurfaceAngle": 90
-            },
-            "rippleEffect": {
-                "show": true,
-                "brushType": "stroke",
-                "scale": 2.5,
-                "period": 4
             }
         }
     ],
@@ -155,31 +147,7 @@
                 "\u81ea\u7531\u5f0f\u6454\u8de4",
                 "\u5176\u4ed6\u9879\u76ee"
             ],
-            "selected": {},
-            "type": "scroll",
-            "show": true,
-            "left": "78%",
-            "top": "12%",
-            "orient": "vertical",
-            "padding": 5,
-            "itemGap": 10,
-            "itemWidth": 25,
-            "itemHeight": 14,
-            "backgroundColor": "transparent",
-            "borderColor": "#ccc",
-            "borderRadius": 0,
-            "pageButtonItemGap": 5,
-            "pageButtonPosition": "end",
-            "pageFormatter": "{current}/{total}",
-            "pageIconColor": "#2f4554",
-            "pageIconInactiveColor": "#aaa",
-            "pageIconSize": 15,
-            "animationDurationUpdate": 800,
-            "selector": false,
-            "selectorPosition": "auto",
-            "selectorItemGap": 7,
-            "selectorButtonGap": 10,
-            "triggerEvent": false
+            "selected": {}
         }
     ],
     "tooltip": {
@@ -198,7 +166,6 @@
         "appendToBody": false,
         "transitionDuration": 0.4,
         "displayTransition": true,
-        "formatter": "{b}: {c} \u679a ({d}%)",
         "textStyle": {
             "fontSize": 14,
             "richInheritPlainLabel": true
@@ -206,22 +173,9 @@
         "borderWidth": 0,
         "padding": 5,
         "order": "seriesAsc"
-    },
-    "title": [
-        {
-            "show": true,
-            "text": "\u5404\u9879\u76ee\u91d1\u724c\u5206\u5e03\u997c\u56fe",
-            "target": "blank",
-            "subtarget": "blank",
-            "padding": 5,
-            "itemGap": 10,
-            "textAlign": "auto",
-            "textVerticalAlign": "auto",
-            "triggerEvent": false
-        }
-    ]
+    }
 };
-        chart_9d1d6298c9674ca1af1bb59d0e9c787f.setOption(option_9d1d6298c9674ca1af1bb59d0e9c787f);
+        chart_53d2e86480ce441c982543dc298b986e.setOption(option_53d2e86480ce441c982543dc298b986e);
     </script>
 </body>
 </html>

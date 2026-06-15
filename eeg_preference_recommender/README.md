@@ -1,6 +1,13 @@
-# 基于脑信号推断用户偏好的深度学习推荐实验
+# 基于脑信号推断用户偏好的推荐实验
 
 本项目是《推荐技术分析与应用》课程实验：使用 EEG 脑电信号推断用户对内容的偏好程度，并将预测偏好分数转化为推荐系统中的 Top-N 排序分数。
+
+当前目录包含两个独立但可关联的实验方向：
+
+- 实验一：基于脑信号推断用户偏好的协同过滤推荐
+- 实验二：基于脑信号推断用户偏好的深度学习推荐
+
+协同过滤实验把 EEG 偏好标签或深度学习预测分数转化为 user-item preference matrix，再实现 UserCF 和 ItemCF。深度学习实验使用 PyTorch CNN 直接从 EEG 信号中学习偏好概率，并生成推荐结果。
 
 ## 实验创新点
 
@@ -18,6 +25,9 @@ eeg_preference_recommender/
 │   ├── raw/
 │   ├── processed/
 │   └── README.md
+├── build_preference_matrix.py
+├── collaborative_filtering.py
+├── run_cf_experiment.py
 ├── src/
 │   ├── config.py
 │   ├── data_loader.py
@@ -34,8 +44,13 @@ eeg_preference_recommender/
 │   ├── figures/
 │   ├── checkpoints/
 │   └── results/
+├── results/
+│   ├── cf_recommendations.csv
+│   ├── user_similarity.csv
+│   └── item_similarity.csv
 ├── report/
 │   ├── experiment_report.md
+│   ├── cf_experiment_report.md
 │   └── report_content.md
 ├── requirements.txt
 └── main.py
@@ -51,7 +66,35 @@ python3 -m venv .venv
 
 如果当前环境已经安装 PyTorch、numpy、pandas、scikit-learn 和 matplotlib，也可以直接使用系统 Python 运行。
 
-## 一键运行
+## 实验一：协同过滤推荐实验
+
+该实验使用 EEG 信号推断出的用户偏好标签或偏好分数作为隐式反馈，构造用户-物品偏好矩阵，并分别实现：
+
+- User-Based Collaborative Filtering：根据相似用户的偏好推荐物品；
+- Item-Based Collaborative Filtering：根据相似物品和用户已喜欢物品进行推荐。
+
+运行命令：
+
+```bash
+python run_cf_experiment.py
+```
+
+输出文件：
+
+- 用户偏好矩阵：`results/preference_matrix.csv`
+- 训练矩阵：`results/cf_train_matrix.csv`
+- 测试交互：`results/cf_test_interactions.csv`
+- 用户相似度矩阵：`results/user_similarity.csv`
+- 物品相似度矩阵：`results/item_similarity.csv`
+- 推荐结果：`results/cf_recommendations.csv`
+- 评价指标：`results/cf_metrics.csv`
+- 实验报告：`report/cf_experiment_report.md`
+
+## 实验二：深度学习推荐实验
+
+该实验使用 PyTorch 搭建 EEGPreferenceNet，从 EEG 信号中学习用户偏好概率、预测评分和兴趣 embedding，再融合物品流行度生成推荐结果。
+
+一键运行：
 
 ```bash
 python main.py
@@ -66,7 +109,7 @@ python main.py
 5. 生成 Top-N 推荐结果；
 6. 生成可视化图表和实验报告。
 
-## 分步运行
+深度学习实验分步运行：
 
 ```bash
 python src/mock_data.py
@@ -100,4 +143,3 @@ score = 0.7 * eeg_preference_score + 0.3 * item_popularity_score
 ```
 
 其中 `eeg_preference_score` 来自深度学习模型，`item_popularity_score` 是物品流行度兜底分数。
-
