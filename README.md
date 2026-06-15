@@ -1,6 +1,6 @@
 # 推荐系统课程实验仓库
 
-本仓库统一整理推荐系统相关课程实验和扩展项目，避免同一课程内容分散在多个仓库中。当前包含图书推荐、超市商品推荐和 EEG 脑信号偏好推荐三个方向，均保留可运行代码、依赖说明和报告材料。
+本仓库统一整理推荐系统相关课程实验和扩展项目，避免同一课程内容分散在多个仓库中。当前包含图书推荐、超市商品推荐、EEG 脑信号偏好推荐和奥运奖牌数据可视化实验，均保留可运行代码、依赖说明、结果产物和报告材料。
 
 ## 实验总览
 
@@ -8,7 +8,8 @@
 | --- | --- | --- | --- |
 | 实验一：图书推荐系统 | 根目录 | 基于 Book-Crossing 数据集的热门推荐和用户协同过滤推荐 | `python main.py` |
 | 实验二：超市智能商品推荐系统 | `lab2_supermarket_recommendation/` | 基于 Amazon 评论数据的商品向量、相似商品检索和网页推荐系统 | `python app.py` |
-| 扩展实验：EEG 偏好推荐 | `eeg_preference_recommender/` | 模拟 EEG 数据、频段特征、PyTorch CNN 分类和 Top-N 推荐 | `python main.py` |
+| 扩展实验：EEG 偏好推荐 | `eeg_preference_recommender/` | EEG 偏好矩阵、UserCF/ItemCF、PyTorch CNN 偏好预测和 Top-N 推荐 | `python main.py` / `python run_cf_experiment.py` |
+| 数据可视化实验：奥运奖牌故事 | `olympic_medal_story/` | 东京奥运会奖牌数据清洗、交互图表和可视化总览页面 | `python olympic_medal_story.py` |
 
 ## 仓库结构
 
@@ -21,18 +22,8 @@ recommend-system/
 ├── data/                                # Book-Crossing 图书数据
 ├── output/                              # 图书推荐运行输出
 ├── lab2_supermarket_recommendation/     # 实验二：超市商品推荐系统
-│   ├── app.py                           # Flask Web 入口
-│   ├── recommendation_module.py          # 推荐算法和模型缓存逻辑
-│   ├── templates/index.html              # 页面模板
-│   ├── requirements.txt                  # 基础依赖
-│   ├── requirements-optional.txt         # BERT/Faiss 可选依赖
-│   └── 实验二报告.docx
-└── eeg_preference_recommender/           # EEG 脑信号偏好推荐扩展实验
-    ├── main.py
-    ├── src/
-    ├── data/
-    ├── outputs/
-    └── report/
+├── eeg_preference_recommender/          # EEG 脑信号偏好推荐扩展实验
+└── olympic_medal_story/                 # 奥运奖牌数据可视化实验
 ```
 
 ## 实验一：图书推荐系统
@@ -67,16 +58,6 @@ output/demo_result.txt
 
 实验二原先独立放在 `recommend-system-lab2` 仓库中，现已合并到本仓库的 `lab2_supermarket_recommendation/` 目录，作为同一门推荐系统课程的第二个实验。
 
-功能流程：
-
-1. 读取 `amazon_reviews.csv` 商品评论数据。
-2. 清洗价格、评分、用户、商品名、品牌和类别字段。
-3. 按用户划分训练集和测试集，避免同一用户同时出现在训练和测试中。
-4. 构建唯一商品池和用户历史行为索引。
-5. 使用商品文本信息生成向量表示。
-6. 优先使用 Faiss 检索相似商品，依赖缺失时降级到 sklearn 最近邻。
-7. 根据用户近期历史商品聚合候选分数，返回 Top-N 推荐。
-
 运行方式：
 
 ```bash
@@ -108,7 +89,10 @@ RS_MAX_ROWS=2000 RS_USE_SENTENCE_TRANSFORMER=0 python app.py
 
 ## 扩展实验：EEG 脑信号偏好推荐
 
-`eeg_preference_recommender/` 是一个独立的深度学习推荐实验，使用模拟脑电数据提取频段特征，通过 PyTorch CNN 推断偏好类别，并生成 Top-N 推荐结果。
+`eeg_preference_recommender/` 是一个独立的推荐系统扩展实验，包含两个方向：
+
+- 协同过滤推荐：基于 EEG 偏好标签构造 user-item preference matrix，并实现 UserCF 和 ItemCF。
+- 深度学习推荐：使用模拟脑电数据提取频段特征，通过 PyTorch CNN 推断偏好类别，并生成 Top-N 推荐结果。
 
 运行方式：
 
@@ -117,6 +101,7 @@ cd eeg_preference_recommender
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+python run_cf_experiment.py
 python main.py
 ```
 
@@ -124,10 +109,34 @@ python main.py
 
 ```text
 eeg_preference_recommender/report/experiment_report.md
+eeg_preference_recommender/report/cf_experiment_report.md
+```
+
+## 数据可视化实验：奥运奖牌故事
+
+`olympic_medal_story/` 用东京奥运会奖牌数据生成一组可展示图表，包括：
+
+- 各国家奖牌总数 Top10 柱状图
+- 各项目金牌分布饼图
+- 获奖时间与奖牌数量关系折线图
+- 子项目获奖名次分布热力图
+- 运动员获奖金牌时间轴
+- 金牌国家与项目关联桑基图
+
+运行方式：
+
+```bash
+python olympic_medal_story/olympic_medal_story.py
+```
+
+汇总页面：
+
+```text
+olympic_medal_story/output/charts/东京奥运会奖牌数据可视化总览.html
 ```
 
 ## 提交与维护说明
 
 - 同一推荐系统课程的实验统一放在本仓库中，后续不再新建 `recommend-system-lab*` 之类的重复仓库。
-- 大体积原始数据不提交到 GitHub，只保留数据字段说明、运行步骤和可复现代码。
+- 大体积原始数据谨慎提交；超过 GitHub 限制的数据应保留字段说明、运行步骤和获取方式。
 - 每个实验目录应保留独立 README 或报告，根 README 负责总览、导航和课程归档说明。
