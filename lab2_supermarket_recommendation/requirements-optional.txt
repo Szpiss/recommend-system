@@ -1,0 +1,3 @@
+# 可选增强依赖：安装后程序会优先使用 BERT 语义向量与 Faiss 检索。
+sentence-transformers>=3.0
+faiss-cpu>=1.8

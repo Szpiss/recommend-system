@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>并夕夕官网 - 并着买，才受罪</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Microsoft YaHei', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #e52e5a 0%, #ff6b6b 100%);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left h1 {
+            color: white;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            font-size: 32px;
+        }
+
+        .tagline {
+            color: #fff9e6;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-info {
+            color: white;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .user-switch {
+            padding: 8px 15px;
+            background: white;
+            color: #e52e5a;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .user-switch:hover {
+            background: #ffeb3b;
+        }
+
+        .status-bar {
+            background: #fff9e6;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            color: #e52e5a;
+            font-weight: 500;
+        }
+
+        /* ========== 历史浏览区域样式 ========== */
+        .history-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .history-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .history-carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .carousel-btn {
+            background: #e52e5a;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.2s;
+        }
+
+        .carousel-btn:hover:not(:disabled) {
+            background: #d81b60;
+        }
+
+        .carousel-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .history-carousel-container {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .history-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .history-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(229,46,90,0.2);
+        }
+
+        .history-category-container {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            position: relative;
+        }
+
+        .history-category-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .history-category-emoji {
+            font-size: 64px;
+        }
+
+        .history-category-text {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 4px 12px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            color: #333;
+        }
+
+        .history-item-info {
+            padding: 12px;
+        }
+
+        .history-item-name {
+            font-size: 13px;
+            font-weight: 400;
+            color: #333;
+            margin-bottom: 8px;
+            height: 36px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height: 18px;
+        }
+
+        .history-item-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .history-item-feature {
+            font-size: 11px;
+            color: #666;
+            background: #f5f5f5;
+            padding: 2px 8px;
+            border-radius: 10px;
+            max-width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .history-item-rating {
+            font-size: 11px;
+            color: #ffa500;
+        }
+
+        .history-item-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e52e5a;
+        }
+
+        .empty-history {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        /* ========== 推荐商品区域样式 ========== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 1400px) {
+            .products-grid, .history-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .products-grid, .history-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .products-grid, .history-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .products-grid, .history-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(229,46,90,0.2);
+        }
+
+        .product-category-container {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            position: relative;
+        }
+
+        .category-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .category-emoji {
+            font-size: 64px;
+        }
+
+        .category-text {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 4px 12px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            color: #333;
+        }
+
+        .product-info {
+            padding: 12px;
+        }
+
+        .product-name {
+            font-size: 13px;
+            font-weight: 400;
+            color: #333;
+            margin-bottom: 8px;
+            height: 36px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height: 18px;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .product-similarity {
+            font-size: 11px;
+            color: #666;
+            background: #f5f5f5;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .product-rating {
+            font-size: 11px;
+            color: #ffa500;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e52e5a;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+            font-size: 16px;
+            grid-column: 1 / -1;
+        }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            grid-column: 1 / -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <h1><span class="logo">🛍️</span> 并夕夕官网</h1>
+                <div class="tagline">并着买，才受罪 💰</div>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    用户: <strong id="currentUser">user_001</strong>
+                </div>
+                <button class="user-switch" onclick="switchUser()">切换账号</button>
+            </div>
+        </div>
+
+        <div class="status-bar" id="statusBar">
+            正在加载推荐商品...
+        </div>
+
+        <!-- 历史浏览区域 -->
+        <div class="history-section">
+            <div class="history-title">📜 历史浏览</div>
+            <div class="history-carousel-wrapper">
+                <button class="carousel-btn" id="prevBtn" onclick="scrollHistory(-1)">❮</button>
+                <div class="history-carousel-container">
+                    <div class="history-grid" id="historyGrid">
+                        <div class="empty-history">开始浏览商品后，这里会显示您的浏览记录</div>
+                    </div>
+                </div>
+                <button class="carousel-btn" id="nextBtn" onclick="scrollHistory(1)">❯</button>
+            </div>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+            <div class="loading">⏳ 加载中...</div>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = 'user_001';
+        let isLoading = false;
+        let historyOffset = 0;
+        let historyData = [];
+        const itemsPerPage = 6;
+
+        // 类目配置
+        const categoryConfig = {
+            'Prime_Pantry': { emoji: '🥫', color: '#ff6b35', name: '食品储藏' },
+            'Grocery_and_Gourmet_Food': { emoji: '🛒', color: '#f7b801', name: '食品杂货' },
+            'Pet_Supplies': { emoji: '🐾', color: '#9b59b6', name: '宠物用品' },
+            'Arts_Crafts_and_Sewing': { emoji: '🎨', color: '#e74c3c', name: '手工艺品' },
+            'Office_Products': { emoji: '📎', color: '#34495e', name: '办公用品' },
+            'Cell_Phones_and_Accessories': { emoji: '📱', color: '#3498db', name: '手机配件' },
+            'Video_Games': { emoji: '🎮', color: '#9b59b6', name: '电子游戏' },
+            'Patio_Lawn_and_Garden': { emoji: '🌱', color: '#27ae60', name: '庭院园艺' },
+            'Software': { emoji: '💿', color: '#5c6ac4', name: '软件' },
+            'Musical_Instruments': { emoji: '🎸', color: '#e67e22', name: '乐器' },
+            'Industrial_and_Scientific': { emoji: '🔬', color: '#16a085', name: '工业科学' },
+            'Luxury_Beauty': { emoji: '💎', color: '#d4af37', name: '奢华美妆' },
+            'All_Beauty': { emoji: '💄', color: '#e91e63', name: '美妆护肤' },
+            'AMAZON_FASHION': { emoji: '👗', color: '#ff6b9d', name: '时尚服饰' },
+            'Digital_Music': { emoji: '🎵', color: '#1abc9c', name: '数字音乐' },
+            'Appliances': { emoji: '🔌', color: '#95a5a6', name: '家用电器' },
+            'Other': { emoji: '🛍️', color: '#95a5a6', name: '其他' },
+            'Unknown': { emoji: '📦', color: '#bdc3c7', name: '商品' }
+        };
+
+        function getCategoryConfig(category) {
+            if (!category) return categoryConfig['Unknown'];
+            if (categoryConfig[category]) return categoryConfig[category];
+
+            const categoryLower = category.toLowerCase();
+            for (let key in categoryConfig) {
+                if (categoryLower.includes(key.toLowerCase()) || key.toLowerCase().includes(categoryLower)) {
+                    return categoryConfig[key];
+                }
+            }
+            return categoryConfig['Other'];
+        }
+
+        function getFirstFeature(featureStr) {
+            if (!featureStr) return '精选商品';
+            try {
+                if (typeof featureStr === 'string' && featureStr.startsWith('[')) {
+                    const features = JSON.parse(featureStr.replace(/'/g, '"'));
+                    if (Array.isArray(features) && features.length > 0) {
+                        return features[0].substring(0, 20);
+                    }
+                }
+                if (typeof featureStr === 'string' && featureStr.includes(',')) {
+                    return featureStr.split(',')[0].trim().substring(0, 20);
+                }
+                return String(featureStr).substring(0, 20);
+            } catch (e) {
+                return '精选商品';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            loadRecommendations();
+            loadHistory();
+        });
+
+        function loadRecommendations() {
+            if (isLoading) return;
+            isLoading = true;
+
+            updateStatus('正在加载推荐商品...');
+            document.getElementById('productsGrid').innerHTML = '<div class="loading">⏳ 加载中...</div>';
+
+            fetch(`/api/recommendations?user_id=${currentUser}&n=300`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        displayProducts(data.items);
+                        updateStatus(`为您推荐 ${data.count} 个好货`);
+                    } else {
+                        updateStatus('加载失败', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    updateStatus('网络错误', 'error');
+                })
+                .finally(() => {
+                    isLoading = false;
+                });
+        }
+
+        function loadHistory() {
+            fetch(`/api/history?user_id=${currentUser}&limit=100`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        historyData = data.items;
+                        historyOffset = 0;
+                        displayHistory();
+                    }
+                })
+                .catch(error => console.error('Error loading history:', error));
+        }
+
+        function displayHistory() {
+            const grid = document.getElementById('historyGrid');
+
+            if (historyData.length === 0) {
+                grid.innerHTML = '<div class="empty-history">开始浏览商品后，这里会显示您的浏览记录</div>';
+                updateHistoryButtons();
+                return;
+            }
+
+            grid.innerHTML = '';
+
+            // 显示当前页的6个商品
+            const startIdx = historyOffset * itemsPerPage;
+            const endIdx = Math.min(startIdx + itemsPerPage, historyData.length);
+            const pageItems = historyData.slice(startIdx, endIdx);
+
+            pageItems.forEach(item => {
+                const card = createHistoryCard(item);
+                grid.appendChild(card);
+            });
+
+            // 补充空白卡片（如果不足6个）
+            const remaining = itemsPerPage - pageItems.length;
+            for (let i = 0; i < remaining; i++) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'history-item';
+                placeholder.style.visibility = 'hidden';
+                grid.appendChild(placeholder);
+            }
+
+            updateHistoryButtons();
+        }
+
+        function createHistoryCard(item) {
+            const categoryConf = getCategoryConfig(item.category);
+            const card = document.createElement('div');
+            card.className = 'history-item';
+            card.onclick = () => onProductClick(item);
+
+            const rating = '⭐'.repeat(Math.floor(item.rating || 0));
+            const feature = getFirstFeature(item.feature);
+
+            card.innerHTML = `
+                <div class="history-category-container" style="background: ${categoryConf.color};">
+                    <div class="history-category-content">
+                        <div class="history-category-emoji">${categoryConf.emoji}</div>
+                        <div class="history-category-text">${categoryConf.name}</div>
+                    </div>
+                </div>
+                <div class="history-item-info">
+                    <div class="history-item-name" title="${escapeHtml(item.itemName)}">
+                        ${escapeHtml(item.itemName)}
+                    </div>
+                    <div class="history-item-meta">
+                        <span class="history-item-feature" title="${escapeHtml(feature)}">${escapeHtml(feature)}</span>
+                        <span class="history-item-rating">${rating}</span>
+                    </div>
+                    <div class="history-item-price">¥${(item.price || 0).toFixed(2)}</div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function scrollHistory(direction) {
+            const totalPages = Math.ceil(historyData.length / itemsPerPage);
+            historyOffset += direction;
+            historyOffset = Math.max(0, Math.min(historyOffset, totalPages - 1));
+
+            displayHistory();
+        }
+
+        function updateHistoryButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            const totalPages = Math.ceil(historyData.length / itemsPerPage);
+
+            prevBtn.disabled = historyOffset === 0;
+            nextBtn.disabled = historyOffset >= totalPages - 1 || historyData.length === 0;
+        }
+
+        function displayProducts(products) {
+            const grid = document.getElementById('productsGrid');
+
+            if (!products || products.length === 0) {
+                grid.innerHTML = '<div class="loading">😕 没有找到商品</div>';
+                return;
+            }
+
+            grid.innerHTML = '';
+
+            products.forEach((product, index) => {
+                const card = createProductCard(product, index);
+                grid.appendChild(card);
+            });
+        }
+
+        function createProductCard(product, index) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.onclick = () => onProductClick(product);
+
+            const categoryConf = getCategoryConfig(product.category);
+            const rating = '⭐'.repeat(Math.floor(product.rating || 0));
+            const price = (product.price || 0).toFixed(2);
+            const similarity = (product.similarity || 0).toFixed(2);
+
+            card.innerHTML = `
+                <div class="product-category-container" style="background: ${categoryConf.color};">
+                    <div class="category-content">
+                        <div class="category-emoji">${categoryConf.emoji}</div>
+                        <div class="category-text">${categoryConf.name}</div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name" title="${escapeHtml(product.itemName)}">
+                        ${escapeHtml(product.itemName)}
+                    </div>
+                    <div class="product-meta">
+                        <span class="product-similarity">相似度: ${similarity}</span>
+                        <span class="product-rating">${rating}</span>
+                    </div>
+                    <div class="product-price">¥${price}</div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function onProductClick(product) {
+            recordBehavior('click', product.itemId);
+
+            const similarity = (product.similarity || 0).toFixed(3);
+            const details = `
+🛍️ 商品详情
+━━━━━━━━━━━━━━━━━━━━
+📦 ${product.itemName}
+
+🏷️ 品牌: ${product.brand || '品牌直营'}
+📂 分类: ${product.category || '精选好货'}
+
+💰 价格: ¥${(product.price || 0).toFixed(2)}
+⭐ 评分: ${(product.rating || 0).toFixed(1)} 分
+🎯 相似度: ${similarity}
+
+🔥 限时拼团中，快来参加！
+━━━━━━━━━━━━━━━━━━━━
+            `.trim();
+
+            alert(details);
+
+            setTimeout(() => {
+                loadHistory();
+                loadRecommendations();
+            }, 100);
+        }
+
+        function recordBehavior(action, itemId = null) {
+            fetch('/api/record-behavior', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    user_id: currentUser,
+                    action: action,
+                    item_id: itemId
+                })
+            }).catch(error => console.error('Error:', error));
+        }
+
+        function switchUser() {
+            fetch('/api/switch-user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    currentUser = data.user_id;
+                    document.getElementById('currentUser').textContent = data.user_name || data.user_id;
+                    historyOffset = 0;
+                    loadHistory();
+                    loadRecommendations();
+                    updateStatus(`${data.message}`);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function updateStatus(message, type = 'info') {
+            const statusBar = document.getElementById('statusBar');
+            statusBar.textContent = message;
+
+            if (type === 'error') {
+                statusBar.style.background = '#ffebee';
+                statusBar.style.color = '#c62828';
+            } else {
+                statusBar.style.background = '#fff9e6';
+                statusBar.style.color = '#e52e5a';
+            }
+        }
+    </script>
+</body>
+</html>
